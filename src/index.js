@@ -4,6 +4,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Home from './Home';
+import Message from './Message';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -11,6 +13,17 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
+
+	},
+	{
+		path: "/home",
+		element: <Home />,
+		
+	},
+	{
+		path: "/message",
+		element: <Message />,
+		
 	},
 ]);
 
