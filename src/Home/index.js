@@ -4,6 +4,7 @@ const Home = () => {
   const diningHalls = [
     { name: "JJ", people: ["amy", "bob", "chris"] },
     { name: "Faculty", people: ["david", "email", "ferris"] },
+    { name: "Hewitt", people: ["Ariel", "Cairo", "Annie"] },
   ];
 
   return (
