@@ -2,16 +2,16 @@ import DiningHall from "./DiningHall";
 
 const Home = () => {
   const diningHalls = [
-    { name: "JJ", people: ["amy", "bob", "chris"] },
-    { name: "Faculty", people: ["david", "email", "ferris"] },
-    { name: "Hewitt", people: ["Ariel", "Cairo", "Annie"] },
+    { hallname: "JJ", people: [{name: "amy", duration: "10am-12pm"}, {name: "bob", duration: "12-1pm"}, {name: "chris", duration: "6-7pm"}] },
+    { hallname: "Faculty", people: [{name: "amy", duration: "10am-12pm"}, {name: "bob", duration: "12-1pm"}, {name: "chris", duration: "6-7pm"}] },
+    { hallname: "Hewitt", people: [{name: "amy", duration: "10am-12pm"}, {name: "bob", duration: "12-1pm"}, {name: "chris", duration: "6-7pm"}] },
   ];
 
   return (
     <>
       <h1>Eat</h1>
       {diningHalls.map((hall, index) => (
-        <DiningHall key={index} name={hall.name} people={hall.people} />
+        <DiningHall key={index} name={hall.hallname} people={hall.people} />
       ))}
     </>
   );
