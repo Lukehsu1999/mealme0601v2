@@ -1,0 +1,109 @@
+swagger: "2.0"
+info:
+  title: MealMe API MVP - OpenAPI 3.0
+  description: |-
+    This is a sample Meal Me Server based on the OpenAPI 3.0 specification.
+  version: 1.0.0
+schemes:
+  - https
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /posts/all:
+    get:
+      tags:
+        - Posts
+      description: Get all event posts
+      parameters:
+        - name: date
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          type: string
+          format: date
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: all posts available
+          schema:
+            $ref: '#/definitions/PostsArray'
+        '403':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /posts/create:
+    post:
+      tags:
+        - Posts
+      description: Create a new post and publish it
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NewPost'
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+        '403':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  PostsArray:
+    type: object
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/EventPost'
+  EventPost:
+    type: object
+    properties:
+      postId:
+        type: string
+      creatorId:
+        type: string
+      content:
+        type: string
+      creationTime:
+        type: string
+        format: date
+      preferredTime:
+        type: string
+        format: date
+  NewPost:
+    type: object
+    properties:
+      creatorId:
+        type: string
+      content:
+        type: string
+      preferredTime:
+        type: string
+        format: date
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
